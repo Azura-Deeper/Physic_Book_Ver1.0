@@ -1,0 +1,761 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS chuyển đổi từ style.css gốc */
+
+:root {
+  /* Light Theme Colors */
+  --primary-color: #2563eb;
+  --secondary-color: #3b82f6;
+  --accent-color: #06b6d4;
+  --text-color: #1f2937;
+  --text-secondary: #6b7280;
+  --background-color: #ffffff;
+  --surface-color: #f8fafc;
+  --border-color: #e5e7eb;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.1);
+  
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  /* Spacing */
+  --sidebar-width: 280px;
+  --header-height: 80px;
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* Dark theme */
+.dark {
+  --primary-color: #3b82f6;
+  --secondary-color: #6366f1;
+  --accent-color: #06b6d4;
+  --text-color: #f9fafb;
+  --text-secondary: #d1d5db;
+  --background-color: #111827;
+  --surface-color: #1f2937;
+  --border-color: #374151;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Sepia theme */
+.sepia {
+  --primary-color: #8b4513;
+  --secondary-color: #a0522d;
+  --accent-color: #cd853f;
+  --text-color: #5d4e37;
+  --text-secondary: #8b7355;
+  --background-color: #f7f3e7;
+  --surface-color: #f0ead6;
+  --border-color: #d2b48c;
+  --shadow-light: 0 1px 3px rgba(93, 78, 55, 0.1);
+  --shadow-medium: 0 4px 6px rgba(93, 78, 55, 0.1);
+  --shadow-large: 0 10px 15px rgba(93, 78, 55, 0.1);
+}
+
+/* High contrast theme */
+.high-contrast {
+  --text-color: #000000;
+  --background-color: #ffffff;
+  --primary-color: #000000;
+  --border-color: #000000;
+}
+
+/* Base styles */
+body {
+  font-family: var(--font-primary);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: var(--transition-normal);
+}
+
+/* Math display styles */
+.math-display {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.math-display .MathJax {
+  font-size: 1.125rem;
+}
+
+/* Custom component styles */
+.btn-icon {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgb(243 244 246);
+  transition: background-color 0.2s;
+}
+
+.btn-icon:hover {
+  background-color: rgb(229 231 235);
+}
+
+.dark .btn-icon {
+  background-color: rgb(55 65 81);
+}
+
+.dark .btn-icon:hover {
+  background-color: rgb(75 85 99);
+}
+
+.content-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dark .content-section {
+  background-color: rgb(31 41 55);
+}
+
+.concept-box {
+  padding: 1rem;
+  background-color: rgb(239 246 255);
+  border-left: 4px solid rgb(59 130 246);
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin: 1rem 0;
+}
+
+.dark .concept-box {
+  background-color: rgba(29 78 216, 0.2);
+}
+
+.formula-box {
+  padding: 1rem;
+  background-color: rgb(249 250 251);
+  border: 1px solid rgb(229 231 235);
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+.dark .formula-box {
+  background-color: rgb(55 65 81);
+  border-color: rgb(75 85 99);
+}
+
+.important-note {
+  padding: 1rem;
+  background-color: rgb(254 252 232);
+  border-left: 4px solid rgb(234 179 8);
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin: 1rem 0;
+}
+
+.dark .important-note {
+  background-color: rgba(234 179 8, 0.2);
+}
+
+.example-box {
+  padding: 1rem;
+  background-color: rgb(240 253 244);
+  border: 1px solid rgb(187 247 208);
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+.dark .example-box {
+  background-color: rgba(34 197 94, 0.2);
+  border-color: rgb(75 85 99);
+}
+
+.exercise {
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid rgb(229 231 235);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.dark .exercise {
+  background-color: rgb(31 41 55);
+  border-color: rgb(75 85 99);
+}
+
+.solution {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgb(249 250 251);
+  border-radius: 0.5rem;
+  border-top: 1px solid rgb(229 231 235);
+}
+
+.dark .solution {
+  background-color: rgb(55 65 81);
+  border-color: rgb(75 85 99);
+}
+
+/* Slide Presentation Styles */
+.prose h2,
+.prose h3,
+.prose h4,
+.prose p,
+.prose li,
+.prose strong,
+.prose em {
+  color: var(--text-color) !important;
+}
+
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4,
+.dark .prose p,
+.dark .prose li,
+.dark .prose strong,
+.dark .prose em {
+  color: rgb(249 250 251) !important;
+}
+
+.dark .prose-invert {
+  --tw-prose-body: rgb(249 250 251);
+  --tw-prose-headings: rgb(249 250 251);
+  --tw-prose-lead: rgb(209 213 219);
+  --tw-prose-links: rgb(147 197 253);
+  --tw-prose-bold: rgb(249 250 251);
+  --tw-prose-counters: rgb(209 213 219);
+  --tw-prose-bullets: rgb(156 163 175);
+  --tw-prose-hr: rgb(75 85 99);
+  --tw-prose-quotes: rgb(249 250 251);
+  --tw-prose-quote-borders: rgb(75 85 99);
+  --tw-prose-captions: rgb(209 213 219);
+  --tw-prose-code: rgb(249 250 251);
+  --tw-prose-pre-code: rgb(209 213 219);
+  --tw-prose-pre-bg: rgb(31 41 55);
+  --tw-prose-th-borders: rgb(75 85 99);
+  --tw-prose-td-borders: rgb(55 65 81);
+}
+
+/* Math formula in dark mode */
+.dark .MathJax_Display {
+  color: rgb(249 250 251) !important;
+}
+
+.dark .MathJax {
+  color: rgb(249 250 251) !important;
+}
+
+/* Card styles for dark mode */
+.dark .formula-card,
+.dark .concept-card {
+  background-color: rgba(55, 65, 81, 0.5);
+  color: rgb(249 250 251);
+}
+
+/* Sepia theme styles */
+.sepia .slide-content h2,
+.sepia .slide-content h3,
+.sepia .slide-content p,
+.sepia .slide-content li {
+  color: var(--text-color);
+}
+
+.sepia .concept-box {
+  background-color: rgba(139, 69, 19, 0.1);
+  border-color: var(--primary-color);
+}
+
+.sepia .formula-box {
+  background-color: rgba(160, 82, 45, 0.1);
+  border-color: var(--border-color);
+}
+
+.sepia .important-note {
+  background-color: rgba(205, 133, 63, 0.1);
+  border-color: var(--accent-color);
+}
+
+.sepia .example-box {
+  background-color: rgba(139, 115, 85, 0.1);
+  border-color: var(--border-color);
+}
+
+/* Override inline styles trong HTML content - Force all text to be visible in dark mode */
+.dark .slide-content *,
+.dark .slide-content h1,
+.dark .slide-content h2, 
+.dark .slide-content h3,
+.dark .slide-content h4,
+.dark .slide-content h5,
+.dark .slide-content h6,
+.dark .slide-content p,
+.dark .slide-content span,
+.dark .slide-content div,
+.dark .slide-content li,
+.dark .slide-content ul,
+.dark .slide-content ol,
+.dark .slide-content strong,
+.dark .slide-content em,
+.dark .slide-content b,
+.dark .slide-content i {
+  color: rgb(249 250 251) !important;
+}
+
+.dark .slide-content .bg-blue-50 {
+  background-color: rgba(29, 78, 216, 0.2) !important;
+}
+
+.dark .slide-content .bg-green-50 {
+  background-color: rgba(34, 197, 94, 0.2) !important;
+}
+
+.dark .slide-content .bg-yellow-50 {
+  background-color: rgba(234, 179, 8, 0.2) !important;
+}
+
+.dark .slide-content .bg-red-50 {
+  background-color: rgba(239, 68, 68, 0.2) !important;
+}
+
+.dark .slide-content .bg-purple-50 {
+  background-color: rgba(147, 51, 234, 0.2) !important;
+}
+
+.dark .slide-content .bg-orange-50 {
+  background-color: rgba(249, 115, 22, 0.2) !important;
+}
+
+.dark .slide-content .bg-pink-50 {
+  background-color: rgba(236, 72, 153, 0.2) !important;
+}
+
+.dark .slide-content .bg-gray-100 {
+  background-color: rgb(55, 65, 81) !important;
+}
+
+.dark .slide-content .bg-gray-50 {
+  background-color: rgb(75, 85, 99) !important;
+}
+
+/* Text colors trong dark mode */
+.dark .slide-content .text-blue-800 {
+  color: rgb(147, 197, 253) !important;
+}
+
+.dark .slide-content .text-green-800 {
+  color: rgb(134, 239, 172) !important;
+}
+
+.dark .slide-content .text-yellow-700 {
+  color: rgb(253, 224, 71) !important;
+}
+
+.dark .slide-content .text-red-600 {
+  color: rgb(248, 113, 113) !important;
+}
+
+.dark .slide-content .text-purple-600 {
+  color: rgb(196, 181, 253) !important;
+}
+
+.dark .slide-content .text-orange-600 {
+  color: rgb(251, 146, 60) !important;
+}
+
+.dark .slide-content .text-blue-200 {
+  color: rgb(147, 197, 253) !important;
+}
+
+.dark .slide-content .text-green-200 {
+  color: rgb(134, 239, 172) !important;
+}
+
+.dark .slide-content .text-green-400 {
+  color: rgb(74, 222, 128) !important;
+}
+
+.dark .slide-content .text-blue-400 {
+  color: rgb(96, 165, 250) !important;
+}
+
+.dark .slide-content .text-purple-400 {
+  color: rgb(196, 181, 253) !important;
+}
+
+.dark .slide-content .text-red-400 {
+  color: rgb(248, 113, 113) !important;
+}
+
+.dark .slide-content .text-orange-400 {
+  color: rgb(251, 146, 60) !important;
+}
+
+.dark .slide-content .text-yellow-300 {
+  color: rgb(253, 224, 71) !important;
+}
+
+/* Additional specific color overrides */
+.dark .slide-content .text-lg,
+.dark .slide-content .text-xl,
+.dark .slide-content .text-2xl,
+.dark .slide-content .text-3xl,
+.dark .slide-content .text-sm,
+.dark .slide-content .text-xs,
+.dark .slide-content .font-bold,
+.dark .slide-content .font-semibold,
+.dark .slide-content .font-medium {
+  color: rgb(249 250 251) !important;
+}
+
+/* Override any possible white text that might be invisible */
+.dark .slide-content .text-white {
+  color: rgb(249 250 251) !important;
+}
+
+.dark .slide-content .text-gray-900 {
+  color: rgb(249 250 251) !important;
+}
+
+.dark .slide-content .text-gray-800 {
+  color: rgb(249 250 251) !important;
+}
+
+.dark .slide-content .text-gray-700 {
+  color: rgb(209 213 219) !important;
+}
+
+.dark .slide-content .text-black {
+  color: rgb(249 250 251) !important;
+}
+
+/* Ensure all possible color variants are visible */
+.dark .slide-content [class*="text-"] {
+  color: rgb(249 250 251) !important;
+}
+
+/* Custom scrollbar for slide content */
+.slide-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+}
+
+.slide-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.slide-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.slide-container::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.5);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.slide-container::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(156, 163, 175, 0.8);
+}
+
+.dark .slide-container::-webkit-scrollbar-thumb {
+  background-color: rgba(75, 85, 99, 0.5);
+}
+
+.dark .slide-container::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(75, 85, 99, 0.8);
+}
+
+/* Fix white backgrounds in dark mode */
+.dark .slide-content .bg-white {
+  background-color: rgb(31 41 55) !important;
+}
+
+.dark .slide-content [style*="background-color: white"],
+.dark .slide-content [style*="background: white"],
+.dark .slide-content [style*="background-color: #fff"],
+.dark .slide-content [style*="background-color: #ffffff"] {
+  background-color: rgb(31 41 55) !important;
+}
+
+/* Override any inline styles that might cause white text on white background */
+.dark .slide-content [style*="color: white"],
+.dark .slide-content [style*="color: #fff"],
+.dark .slide-content [style*="color: #ffffff"] {
+  color: rgb(249 250 251) !important;
+}
+
+/* Specific fixes for concept boxes and other containers */
+.dark .slide-content .concept-box,
+.dark .slide-content .definition-box,
+.dark .slide-content .important-note,
+.dark .slide-content .example-box {
+  background-color: rgba(31, 41, 55, 0.8) !important;
+  color: rgb(249 250 251) !important;
+}
+
+/* Ultimate override - ensure EVERYTHING is visible in dark mode */
+.dark .slide-content,
+.dark .slide-content * {
+  color: rgb(249 250 251) !important;
+}
+
+/* Only override specific background colors that we want to keep colored */
+.dark .slide-content .text-blue-800 { color: rgb(147, 197, 253) !important; }
+.dark .slide-content .text-blue-200 { color: rgb(147, 197, 253) !important; }
+.dark .slide-content .text-green-800 { color: rgb(134, 239, 172) !important; }
+.dark .slide-content .text-green-200 { color: rgb(134, 239, 172) !important; }
+.dark .slide-content .text-purple-600 { color: rgb(196, 181, 253) !important; }
+.dark .slide-content .text-purple-400 { color: rgb(196, 181, 253) !important; }
+.dark .slide-content .text-yellow-700 { color: rgb(253, 224, 71) !important; }
+.dark .slide-content .text-yellow-300 { color: rgb(253, 224, 71) !important; }
+.dark .slide-content .text-red-600 { color: rgb(248, 113, 113) !important; }
+.dark .slide-content .text-red-400 { color: rgb(248, 113, 113) !important; }
+.dark .slide-content .text-orange-600 { color: rgb(251, 146, 60) !important; }
+.dark .slide-content .text-orange-400 { color: rgb(251, 146, 60) !important; }
+
+.quiz-options label {
+  display: block;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: rgb(249 250 251);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.quiz-options label:hover {
+  background-color: rgb(243 244 246);
+}
+
+.dark .quiz-options label {
+  background-color: rgb(55 65 81);
+}
+
+.dark .quiz-options label:hover {
+  background-color: rgb(75 85 99);
+}
+
+.quiz-result {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+}
+
+.quiz-result.correct {
+  background-color: rgb(220 252 231);
+  color: rgb(22 101 52);
+}
+
+.dark .quiz-result.correct {
+  background-color: rgba(34 197 94, 0.2);
+  color: rgb(187 247 208);
+}
+
+.quiz-result.incorrect {
+  background-color: rgb(254 226 226);
+  color: rgb(153 27 27);
+}
+
+.dark .quiz-result.incorrect {
+  background-color: rgba(239 68 68, 0.2);
+  color: rgb(252 165 165);
+}
+
+/* Progress bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0.25rem;
+  background-color: rgb(229 231 235);
+  z-index: 50;
+}
+
+.dark .progress-bar {
+  background-color: rgb(55 65 81);
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: rgb(59 130 246);
+  transition: all 0.3s ease-out;
+}
+
+/* Sidebar styles */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 5rem;
+  height: calc(100vh - 5rem);
+  width: 20rem;
+  background-color: white;
+  border-right: 1px solid rgb(229 231 235);
+  overflow-y: auto;
+  z-index: 40;
+  transition: transform 0.3s;
+}
+
+.dark .sidebar {
+  background-color: rgb(31 41 55);
+  border-color: rgb(55 65 81);
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.toc-list a {
+  display: block;
+  padding: 0.75rem;
+  color: rgb(55 65 81);
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.toc-list a:hover {
+  background-color: rgb(243 244 246);
+}
+
+.dark .toc-list a {
+  color: rgb(209 213 219);
+}
+
+.dark .toc-list a:hover {
+  background-color: rgb(55 65 81);
+}
+
+.toc-list a.active {
+  background-color: rgb(219 234 254);
+  color: rgb(29 78 216);
+}
+
+.dark .toc-list a.active {
+  background-color: rgba(37 99 235, 0.3);
+  color: rgb(147 197 253);
+}
+
+/* Search panel */
+.search-panel {
+  position: fixed;
+  top: 5rem;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-bottom: 1px solid rgb(229 231 235);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  transition: transform 0.3s;
+}
+
+.dark .search-panel {
+  background-color: rgb(31 41 55);
+  border-color: rgb(55 65 81);
+}
+
+.search-panel.hidden {
+  transform: translateY(-100%);
+}
+
+/* Main content responsive margins */
+.main-content {
+  transition: all 0.3s;
+}
+
+.main-content.sidebar-open {
+  margin-left: 20rem;
+}
+
+.main-content.sidebar-closed {
+  margin-left: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: 20rem;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .main-content.sidebar-open {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+  }
+  
+  .content-section {
+    padding: 1rem;
+  }
+  
+  .formula-box {
+    padding: 0.75rem;
+  }
+  
+  .math-display {
+    font-size: 0.875rem;
+    overflow-x: auto;
+  }
+  
+  .exercise {
+    padding: 1rem;
+  }
+  
+  /* Improve touch targets on mobile */
+  .btn-icon {
+    padding: 0.75rem;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  .toc-list a {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  /* Better spacing for mobile */
+  .grid-2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+  from { 
+    opacity: 0; 
+    transform: translateX(100%); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out;
+}

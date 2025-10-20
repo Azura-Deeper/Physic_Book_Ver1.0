@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương 1: Dao động - Vật lí 11 Chân trời sáng tạo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-wave-square"></i> Chương 1: Dao động</h1>
+                <p class="subtitle">Vật lí 11 - Chân trời sáng tạo</p>
+                <div class="header-controls">
+                    <button id="theme-toggle" class="btn-icon" title="Chuyển đổi chế độ">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="search-btn" class="btn-icon" title="Tìm kiếm">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button id="menu-toggle" class="btn-icon mobile-only" title="Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search Panel -->
+        <div id="search-panel" class="search-panel hidden">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Tìm kiếm nội dung...">
+                <button id="search-close" class="btn-icon">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="search-results" class="search-results"></div>
+        </div>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="table-of-contents">
+                    <h3><i class="fas fa-list"></i> Mục lục</h3>
+                    <ul class="toc-list">
+                        <li><a href="#gioi-thieu" data-section="gioi-thieu">Giới thiệu về dao động</a></li>
+                        <li><a href="#dao-dong-dieu-hoa" data-section="dao-dong-dieu-hoa">Dao động điều hòa</a>
+                            <ul>
+                                <li><a href="#dinh-nghia" data-section="dinh-nghia">Định nghĩa</a></li>
+                                <li><a href="#phuong-trinh" data-section="phuong-trinh">Phương trình dao động</a></li>
+                                <li><a href="#cac-dai-luong" data-section="cac-dai-luong">Các đại lượng đặc trưng</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#con-lac-lo-xo" data-section="con-lac-lo-xo">Con lắc lò xo</a>
+                            <ul>
+                                <li><a href="#ly-thuyet" data-section="ly-thuyet">Lý thuyết</a></li>
+                                <li><a href="#cong-thuc" data-section="cong-thuc">Công thức cơ bản</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#con-lac-don" data-section="con-lac-don">Con lắc đơn</a></li>
+                        <li><a href="#dao-dong-tat-dan" data-section="dao-dong-tat-dan">Dao động tắt dần</a></li>
+                        <li><a href="#dao-dong-cung-buoc" data-section="dao-dong-cung-buoc">Dao động cưỡng bức</a></li>
+                        <li><a href="#bai-tap" data-section="bai-tap">Bài tập thực hành</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="content">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+
+                <!-- Giới thiệu -->
+                <section id="gioi-thieu" class="content-section">
+                    <h2><i class="fas fa-play-circle"></i> Giới thiệu về dao động</h2>
+                    <div class="intro-card">
+                        <p class="lead">Dao động là một hiện tượng phổ biến trong tự nhiên và kỹ thuật. Từ việc lắc lư của cành cây trong gió đến hoạt động của đồng hồ quả lắc, dao động có mặt khắp nơi xung quanh chúng ta.</p>
+                    </div>
+                    
+                    <div class="concept-box">
+                        <h4><i class="fas fa-lightbulb"></i> Khái niệm cơ bản</h4>
+                        <p><strong>Dao động</strong> là chuyển động lặp lại theo thời gian của một vật quanh vị trí cân bằng.</p>
+                        <div class="examples">
+                            <h5>Ví dụ trong thực tế:</h5>
+                            <ul>
+                                <li>🕰️ Quả lắc đồng hồ</li>
+                                <li>🎸 Dây đàn guitar khi gảy</li>
+                                <li>🌊 Sóng trên mặt nước</li>
+                                <li>💓 Nhịp đập của tim</li>
+                                <li>🏗️ Dao động của cầu trong gió</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Dao động điều hòa -->
+                <section id="dao-dong-dieu-hoa" class="content-section">
+                    <h2><i class="fas fa-wave-square"></i> Dao động điều hòa</h2>
+                    
+                    <div id="dinh-nghia" class="subsection">
+                        <h3>Định nghĩa</h3>
+                        <div class="definition-box">
+                            <p><strong>Dao động điều hòa</strong> là dao động trong đó li độ của vật biến thiên theo thời gian theo quy luật hình sin (hoặc cosin).</p>
+                        </div>
+                    </div>
+
+                    <div id="phuong-trinh" class="subsection">
+                        <h3>Phương trình dao động điều hòa</h3>
+                        <div class="formula-box">
+                            <p>Phương trình li độ:</p>
+                            <div class="math-display">
+                                $$x = A\cos(\omega t + \varphi)$$
+                            </div>
+                            <div class="formula-explanation">
+                                <p>Trong đó:</p>
+                                <ul>
+                                    <li><strong>x</strong>: li độ (m)</li>
+                                    <li><strong>A</strong>: biên độ dao động (m)</li>
+                                    <li><strong>ω</strong>: tần số góc (rad/s)</li>
+                                    <li><strong>φ</strong>: pha ban đầu (rad)</li>
+                                    <li><strong>(ωt + φ)</strong>: pha dao động (rad)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="formula-box">
+                            <p>Phương trình vận tốc:</p>
+                            <div class="math-display">
+                                $$v = \frac{dx}{dt} = -A\omega\sin(\omega t + \varphi)$$
+                            </div>
+                        </div>
+
+                        <div class="formula-box">
+                            <p>Phương trình gia tốc:</p>
+                            <div class="math-display">
+                                $$a = \frac{dv}{dt} = -A\omega^2\cos(\omega t + \varphi) = -\omega^2 x$$
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="cac-dai-luong" class="subsection">
+                        <h3>Các đại lượng đặc trưng</h3>
+                        <div class="grid-2">
+                            <div class="info-card">
+                                <h4><i class="fas fa-arrows-alt-h"></i> Biên độ (A)</h4>
+                                <p>Giá trị cực đại của li độ. Đặc trưng cho "độ mạnh" của dao động.</p>
+                                <div class="math-display">$$A = |x|_{max}$$</div>
+                            </div>
+                            <div class="info-card">
+                                <h4><i class="fas fa-clock"></i> Chu kì (T)</h4>
+                                <p>Khoảng thời gian để vật thực hiện một dao động toàn phần.</p>
+                                <div class="math-display">$$T = \frac{2\pi}{\omega}$$</div>
+                            </div>
+                            <div class="info-card">
+                                <h4><i class="fas fa-tachometer-alt"></i> Tần số (f)</h4>
+                                <p>Số dao động toàn phần trong một giây.</p>
+                                <div class="math-display">$$f = \frac{1}{T} = \frac{\omega}{2\pi}$$</div>
+                            </div>
+                            <div class="info-card">
+                                <h4><i class="fas fa-sync-alt"></i> Tần số góc (ω)</h4>
+                                <p>Đặc trưng cho tốc độ biến thiên pha dao động.</p>
+                                <div class="math-display">$$\omega = 2\pi f = \frac{2\pi}{T}$$</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Con lắc lò xo -->
+                <section id="con-lac-lo-xo" class="content-section">
+                    <h2><i class="fas fa-compress-arrows-alt"></i> Con lắc lò xo</h2>
+                    
+                    <div id="ly-thuyet" class="subsection">
+                        <h3>Lý thuyết</h3>
+                        <div class="concept-box">
+                            <p>Con lắc lò xo gồm một vật có khối lượng m gắn vào đầu lò xo có độ cứng k. Khi vật bị kéo ra khỏi vị trí cân bằng và thả ra, nó sẽ dao động điều hòa.</p>
+                        </div>
+                        
+                        <div class="illustration">
+                            <div class="spring-system">
+                                <div class="spring"></div>
+                                <div class="mass">m</div>
+                                <div class="labels">
+                                    <span class="label-k">k (độ cứng)</span>
+                                    <span class="label-m">m (khối lượng)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="cong-thuc" class="subsection">
+                        <h3>Công thức cơ bản</h3>
+                        <div class="formula-grid">
+                            <div class="formula-box">
+                                <h4>Tần số góc</h4>
+                                <div class="math-display">$$\omega = \sqrt{\frac{k}{m}}$$</div>
+                            </div>
+                            <div class="formula-box">
+                                <h4>Chu kì dao động</h4>
+                                <div class="math-display">$$T = 2\pi\sqrt{\frac{m}{k}}$$</div>
+                            </div>
+                            <div class="formula-box">
+                                <h4>Tần số dao động</h4>
+                                <div class="math-display">$$f = \frac{1}{2\pi}\sqrt{\frac{k}{m}}$$</div>
+                            </div>
+                            <div class="formula-box">
+                                <h4>Lực phục hồi</h4>
+                                <div class="math-display">$$F = -kx$$</div>
+                            </div>
+                        </div>
+
+                        <div class="important-note">
+                            <h4><i class="fas fa-exclamation-triangle"></i> Lưu ý quan trọng</h4>
+                            <ul>
+                                <li>Chu kì và tần số không phụ thuộc vào biên độ dao động</li>
+                                <li>Chu kì tỉ lệ thuận với căn bậc hai của khối lượng</li>
+                                <li>Chu kì tỉ lệ nghịch với căn bậc hai của độ cứng lò xo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Con lắc đơn -->
+                <section id="con-lac-don" class="content-section">
+                    <h2><i class="fas fa-circle"></i> Con lắc đơn</h2>
+                    
+                    <div class="concept-box">
+                        <p>Con lắc đơn gồm một vật nhỏ có khối lượng m treo vào một sợi dây không dãn, có khối lượng không đáng kể, có chiều dài l. Khi góc lệch nhỏ (α < 10°), con lắc đơn dao động điều hòa.</p>
+                    </div>
+
+                    <div class="formula-grid">
+                        <div class="formula-box">
+                            <h4>Chu kì dao động</h4>
+                            <div class="math-display">$$T = 2\pi\sqrt{\frac{l}{g}}$$</div>
+                            <p class="note">Không phụ thuộc vào khối lượng và biên độ</p>
+                        </div>
+                        <div class="formula-box">
+                            <h4>Tần số góc</h4>
+                            <div class="math-display">$$\omega = \sqrt{\frac{g}{l}}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="practical-example">
+                        <h4><i class="fas fa-calculator"></i> Ví dụ tính toán</h4>
+                        <div class="example-box">
+                            <p><strong>Bài toán:</strong> Một con lắc đơn có chiều dài 1m dao động tại nơi có g = 10 m/s². Tính chu kì dao động.</p>
+                            <p><strong>Giải:</strong></p>
+                            <div class="math-display">
+                                $$T = 2\pi\sqrt{\frac{l}{g}} = 2\pi\sqrt{\frac{1}{10}} = 2\pi\sqrt{0.1} ≈ 2s$$
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Dao động tắt dần -->
+                <section id="dao-dong-tat-dan" class="content-section">
+                    <h2><i class="fas fa-chart-line-down"></i> Dao động tắt dần</h2>
+                    
+                    <div class="concept-box">
+                        <p>Trong thực tế, do có ma sát và lực cản, biên độ dao động giảm dần theo thời gian và cuối cùng dừng lại. Đây là dao động tắt dần.</p>
+                    </div>
+
+                    <div class="characteristics">
+                        <h4>Đặc điểm:</h4>
+                        <ul>
+                            <li>Biên độ giảm dần theo thời gian</li>
+                            <li>Chu kì gần như không đổi (khi lực cản nhỏ)</li>
+                            <li>Cơ năng giảm dần và chuyển thành nhiệt năng</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Dao động cưỡng bức -->
+                <section id="dao-dong-cung-buoc" class="content-section">
+                    <h2><i class="fas fa-broadcast-tower"></i> Dao động cưỡng bức và cộng hưởng</h2>
+                    
+                    <div class="concept-box">
+                        <p>Dao động cưỡng bức là dao động của hệ dưới tác dụng của ngoại lực biến thiên tuần hoàn.</p>
+                    </div>
+
+                    <div class="resonance-section">
+                        <h4><i class="fas fa-sound"></i> Hiện tượng cộng hưởng</h4>
+                        <div class="important-note">
+                            <p>Khi tần số của ngoại lực bằng tần số riêng của hệ (f = f₀), biên độ dao động đạt giá trị cực đại. Đây là hiện tượng <strong>cộng hưởng</strong>.</p>
+                        </div>
+                        
+                        <div class="applications">
+                            <h5>Ứng dụng và tác hại:</h5>
+                            <div class="grid-2">
+                                <div class="app-card positive">
+                                    <h6><i class="fas fa-plus-circle"></i> Ứng dụng có lợi</h6>
+                                    <ul>
+                                        <li>Lò vi sóng</li>
+                                        <li>Máy massage</li>
+                                        <li>Nhạc cụ</li>
+                                    </ul>
+                                </div>
+                                <div class="app-card negative">
+                                    <h6><i class="fas fa-exclamation-circle"></i> Tác hại cần tránh</h6>
+                                    <ul>
+                                        <li>Sập cầu do cộng hưởng</li>
+                                        <li>Rung động máy móc</li>
+                                        <li>Tiếng ồn</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bài tập -->
+                <section id="bai-tap" class="content-section">
+                    <h2><i class="fas fa-pencil-alt"></i> Bài tập thực hành</h2>
+                    
+                    <div class="exercise-container">
+                        <div class="exercise" data-exercise="1">
+                            <h4>Bài tập 1: Con lắc lò xo</h4>
+                            <p>Một con lắc lò xo có khối lượng m = 200g, độ cứng k = 50 N/m. Tính chu kì và tần số dao động.</p>
+                            <button class="btn-solution" onclick="toggleSolution(1)">Xem lời giải</button>
+                            <div class="solution" id="solution-1">
+                                <p><strong>Giải:</strong></p>
+                                <div class="math-display">
+                                    $$T = 2\pi\sqrt{\frac{m}{k}} = 2\pi\sqrt{\frac{0.2}{50}} = 2\pi\sqrt{0.004} = 2\pi \times 0.063 ≈ 0.4s$$
+                                </div>
+                                <div class="math-display">
+                                    $$f = \frac{1}{T} = \frac{1}{0.4} = 2.5Hz$$
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exercise" data-exercise="2">
+                            <h4>Bài tập 2: Con lắc đơn</h4>
+                            <p>Một con lắc đơn có chu kì T = 2s tại nơi có g = 10 m/s². Tính chiều dài của con lắc.</p>
+                            <button class="btn-solution" onclick="toggleSolution(2)">Xem lời giải</button>
+                            <div class="solution" id="solution-2">
+                                <p><strong>Giải:</strong></p>
+                                <div class="math-display">
+                                    $$T = 2\pi\sqrt{\frac{l}{g}} \Rightarrow l = \frac{gT^2}{4\pi^2} = \frac{10 \times 4}{4\pi^2} = \frac{40}{40} = 1m$$
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exercise" data-exercise="3">
+                            <h4>Bài tập 3: Phương trình dao động</h4>
+                            <p>Một vật dao động điều hòa với phương trình x = 5cos(4πt + π/3) cm. Xác định biên độ, chu kì, tần số và pha ban đầu.</p>
+                            <button class="btn-solution" onclick="toggleSolution(3)">Xem lời giải</button>
+                            <div class="solution" id="solution-3">
+                                <p><strong>Giải:</strong></p>
+                                <ul>
+                                    <li>Biên độ: A = 5 cm</li>
+                                    <li>Tần số góc: ω = 4π rad/s</li>
+                                    <li>Chu kì: T = 2π/ω = 2π/(4π) = 0.5 s</li>
+                                    <li>Tần số: f = 1/T = 2 Hz</li>
+                                    <li>Pha ban đầu: φ = π/3 rad</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-section">
+                        <h4><i class="fas fa-question-circle"></i> Câu hỏi trắc nghiệm</h4>
+                        <div class="quiz" id="quiz-1">
+                            <p><strong>Câu 1:</strong> Đại lượng nào sau đây KHÔNG ảnh hưởng đến chu kì dao động của con lắc đơn?</p>
+                            <div class="quiz-options">
+                                <label><input type="radio" name="q1" value="a"> A. Chiều dài dây treo</label>
+                                <label><input type="radio" name="q1" value="b"> B. Khối lượng vật nặng</label>
+                                <label><input type="radio" name="q1" value="c"> C. Gia tốc trọng trường</label>
+                                <label><input type="radio" name="q1" value="d"> D. Vị trí địa lý</label>
+                            </div>
+                            <button class="btn-check" onclick="checkQuiz(1, 'b')">Kiểm tra</button>
+                            <div class="quiz-result" id="result-1"></div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Sách điện tử Vật lí 11 - Chân trời sáng tạo</p>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/exercises.js"></script>
+</body>
+</html>

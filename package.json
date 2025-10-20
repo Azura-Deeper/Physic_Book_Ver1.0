@@ -1,0 +1,55 @@
+{
+  "name": "physics-book-nextjs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interactive Physics Book - Chương 1: Dao động (Vật lí 11 Chân trời sáng tạo)",
+  "author": "Hung Hoang",
+  "license": "MIT",
+  "keywords": ["physics", "education", "nextjs", "react", "vietnamese", "dao-dong", "vat-ly"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Azura-Deeper/Physic_Book_Ver1.0.git"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf .next out",
+    "seed": "node scripts/seedData.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "better-react-mathjax": "^2.3.0",
+    "dotenv": "^16.6.1",
+    "jsonwebtoken": "^9.0.2",
+    "katex": "^0.16.9",
+    "mathjax": "^3.2.2",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.19.2",
+    "next": "14.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-katex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^20.10.4",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "14.0.3",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.3.3"
+  }
+}
