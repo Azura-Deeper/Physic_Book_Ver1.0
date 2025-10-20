@@ -209,9 +209,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 👨‍💻 Author
 
-**Hung Hoang**
-- GitHub: [@hunghoang](https://github.com/hunghoang)
-- Email: hunghoang.dev@gmail.com
+**Hung Ho**
+- GitHub: [@Hungho](https://github.com/Azura-Deeper)
+- Email: hunghs25202@gmail.com
 
 ---
 
