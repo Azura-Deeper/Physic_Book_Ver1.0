@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Interactive Physics Book - Chương 1: Dao động (Vật lí 11 Chân trời sáng tạo)",
-  "author": "Hung Hoang",
+  "author": "Hung Ho",
   "license": "MIT",
   "keywords": ["physics", "education", "nextjs", "react", "vietnamese", "dao-dong", "vat-ly"],
   "repository": {
