@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Chapter } from '../../components/ContentLoader'
+import { Chapter } from '../../types/Chapter'
 
 export default function AdminPanel() {
   const [chapters, setChapters] = useState<Chapter[]>([])

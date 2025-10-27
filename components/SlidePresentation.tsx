@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, forwardRef, useImperativeHandle } from 'react'
 import { MathFormula } from './Math'
 import { useProgress } from '@/hooks/useProgress'
+import OscillationSimulation from './OscillationSimulation'
 
 interface Slide {
   id: number
@@ -106,6 +107,39 @@ const SlidePresentation = forwardRef<SlidePresentationRef, SlidePresentationProp
     // Check on window resize
     window.addEventListener('resize', checkScrollable)
     return () => window.removeEventListener('resize', checkScrollable)
+  }, [currentSlide])
+
+  // Trigger MathJax to typeset the content after slide changes
+  useEffect(() => {
+    // Only typeset the slide content area, not the formulas section
+    if (typeof window !== 'undefined' && (window as any).MathJax) {
+      try {
+        const slideContent = document.querySelector('.slide-content')
+        if (slideContent) {
+          (window as any).MathJax.typesetPromise?.([slideContent])
+        }
+      } catch (err) {
+        console.error('MathJax typeset error:', err)
+      }
+    }
+
+    // Render simulations after content is loaded
+    setTimeout(() => {
+      const renderSimulation = (id: string, type: 'simple' | 'spring' | 'pendulum' | 'wave') => {
+        const container = document.getElementById(id)
+        if (container && container.children.length === 0) {
+          import('react-dom/client').then(({ createRoot }) => {
+            const root = createRoot(container)
+            root.render(<OscillationSimulation type={type} />)
+          })
+        }
+      }
+
+      renderSimulation('simulation-simple', 'simple')
+      renderSimulation('simulation-spring', 'spring')
+      renderSimulation('simulation-pendulum', 'pendulum')
+      renderSimulation('simulation-wave', 'wave')
+    }, 100)
   }, [currentSlide])
 
   // Expose methods to parent component

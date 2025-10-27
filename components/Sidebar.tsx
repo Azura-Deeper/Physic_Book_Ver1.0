@@ -1,6 +1,6 @@
 'use client'
 
-import { Chapter } from './ContentLoader'
+import { Chapter } from '../types/Chapter'
 
 interface SidebarProps {
   isOpen: boolean

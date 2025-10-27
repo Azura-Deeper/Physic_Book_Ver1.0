@@ -6,6 +6,7 @@ import { MathFormula } from '@/components/Math'
 import SlidePresentation, { SlidePresentationRef } from '@/components/SlidePresentation'
 import { useProgress } from '@/hooks/useProgress'
 import Toast from '@/components/Toast'
+import OscillationSimulation from '@/components/OscillationSimulation'
 
 interface Slide {
   id: number
@@ -49,11 +50,11 @@ export default function LessonPage() {
           title: "Khái niệm dao động",
           type: "intro",
           content: `
-            <h2>🌊 Dao động là gì?</h2>
+            <h2>Dao động là gì?</h2>
             <p class="text-xl mb-6">Dao động là chuyển động có tính chất <strong>tuần hoàn theo thời gian</strong>, trong đó vật chuyển động qua lại quanh một vị trí cân bằng.</p>
             
             <div class="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-6 rounded-xl mb-6">
-              <h3 class="font-bold mb-3 text-lg">🎯 Định nghĩa chính xác</h3>
+              <h3 class="font-bold mb-3 text-lg">I. Định nghĩa</h3>
               <p class="text-base leading-relaxed">
                 Dao động cơ học là chuyển động có giới hạn trong không gian, lặp lại nhiều lần quanh một vị trí cân bằng.
               </p>
@@ -61,7 +62,7 @@ export default function LessonPage() {
             
             <div class="grid md:grid-cols-2 gap-6 mt-8">
               <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
-                <h3 class="font-bold text-blue-800 dark:text-blue-200 mb-2">🎯 Ví dụ trong tự nhiên</h3>
+                <h3 class="font-bold text-blue-800 dark:text-blue-200 mb-2">Ví dụ thực tế</h3>
                 <ul class="space-y-1 text-sm">
                   <li>• Con lắc đồng hồ quả lắc</li>
                   <li>• Dây đàn guitar sau khi gảy</li>
@@ -71,7 +72,7 @@ export default function LessonPage() {
                 </ul>
               </div>
               <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
-                <h3 class="font-bold text-green-800 dark:text-green-200 mb-2">⚡ Đặc điểm cơ bản</h3>
+                <h3 class="font-bold text-green-800 dark:text-green-200 mb-2">Đặc điểm cơ bản</h3>
                 <ul class="space-y-1 text-sm">
                   <li>• Chuyển động lặp lại theo thời gian</li>
                   <li>• Có vị trí cân bằng ổn định</li>
@@ -83,8 +84,13 @@ export default function LessonPage() {
             </div>
 
             <div class="mt-6 bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg border-l-4 border-amber-400">
-              <h4 class="font-semibold text-amber-800 dark:text-amber-200 mb-2">💡 Lưu ý quan trọng</h4>
+              <h4 class="font-semibold text-amber-800 dark:text-amber-200 mb-2">Chú ý:</h4>
               <p class="text-sm">Dao động khác với chuyển động tròn đều ở chỗ: dao động có giới hạn trong không gian và có sự đổi chiều chuyển động.</p>
+            </div>
+
+            <div class="mt-8">
+              <h3 class="font-bold text-lg mb-4 text-center">Mô phỏng dao động điều hòa</h3>
+              <div id="simulation-simple"></div>
             </div>
           `,
           notes: "Dao động xuất hiện khắp nơi trong tự nhiên và công nghệ"
@@ -94,11 +100,11 @@ export default function LessonPage() {
           title: "Phân loại dao động",
           type: "concept",
           content: `
-            <h2>🔄 Các loại dao động cơ bản</h2>
+            <h2>II. Các loại dao động cơ bản</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
               <div class="bg-blue-100 dark:bg-blue-900/30 p-4 rounded-lg border-l-4 border-blue-500">
-                <h3 class="font-bold text-blue-800 dark:text-blue-200 mb-2">🏠 Dao động tự do</h3>
+                <h3 class="font-bold text-blue-800 dark:text-blue-200 mb-2">1. Dao động tự do</h3>
                 <p class="text-sm mb-3 font-medium">Dao động chỉ chịu tác dụng của nội lực</p>
                 <div class="text-xs space-y-1">
                   <p>• Tần số riêng của hệ (f₀ = const)</p>
@@ -109,7 +115,7 @@ export default function LessonPage() {
               </div>
               
               <div class="bg-green-100 dark:bg-green-900/30 p-4 rounded-lg border-l-4 border-green-500">
-                <h3 class="font-bold text-green-800 dark:text-green-200 mb-2">⚡ Dao động cưỡng bức</h3>
+                <h3 class="font-bold text-green-800 dark:text-green-200 mb-2">2. Dao động cưỡng bức</h3>
                 <p class="text-sm mb-3 font-medium">Dao động dưới tác dụng của ngoại lực tuần hoàn</p>
                 <div class="text-xs space-y-1">
                   <p>• Tần số bằng tần số ngoại lực (f = f_ngoai)</p>
@@ -120,7 +126,7 @@ export default function LessonPage() {
               </div>
               
               <div class="bg-purple-100 dark:bg-purple-900/30 p-4 rounded-lg border-l-4 border-purple-500">
-                <h3 class="font-bold text-purple-800 dark:text-purple-200 mb-2">📉 Dao động tắt dần</h3>
+                <h3 class="font-bold text-purple-800 dark:text-purple-200 mb-2">3. Dao động tắt dần</h3>
                 <p class="text-sm mb-3 font-medium">Dao động có ma sát, biên độ giảm dần</p>
                 <div class="text-xs space-y-1">
                   <p>• Có lực cản (ma sát, không khí)</p>
@@ -132,7 +138,7 @@ export default function LessonPage() {
             </div>
 
             <div class="mt-8 bg-gray-50 dark:bg-gray-800 p-5 rounded-lg">
-              <h3 class="font-bold mb-4 text-lg">📊 Bảng so sánh chi tiết</h3>
+              <h3 class="font-bold mb-4 text-lg">Bảng 1: So sánh các loại dao động</h3>
               <div class="overflow-x-auto">
                 <table class="w-full text-sm border-collapse">
                   <thead>
@@ -166,6 +172,22 @@ export default function LessonPage() {
                 </table>
               </div>
             </div>
+
+            <div class="mt-8">
+              <h3 class="font-bold text-lg mb-4 text-center">Mô phỏng con lắc lò xo</h3>
+              <div id="simulation-spring"></div>
+              <p class="text-center text-sm text-gray-600 dark:text-gray-400 mt-3">
+                Mô phỏng dao động tự do của con lắc lò xo
+              </p>
+            </div>
+
+            <div class="mt-8">
+              <h3 class="font-bold text-lg mb-4 text-center">Mô phỏng con lắc đơn</h3>
+              <div id="simulation-pendulum"></div>
+              <p class="text-center text-sm text-gray-600 dark:text-gray-400 mt-3">
+                Mô phỏng dao động của con lắc đơn với góc lệch nhỏ
+              </p>
+            </div>
           `,
           notes: "Mỗi loại dao động có đặc điểm và ứng dụng riêng trong thực tế"
         },
@@ -174,11 +196,11 @@ export default function LessonPage() {
           title: "Các đại lượng đặc trưng của dao động",
           type: "formula",
           content: `
-            <h2>📏 Các thông số đặc trưng</h2>
+            <h2>III. Các đại lượng đặc trưng</h2>
             
             <div class="grid md:grid-cols-2 gap-6 mb-8">
               <div class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl border border-blue-200 dark:border-blue-700">
-                <h3 class="font-bold mb-3 text-blue-800 dark:text-blue-200 text-lg">🕐 Chu kì (T)</h3>
+                <h3 class="font-bold mb-3 text-blue-800 dark:text-blue-200 text-lg">1. Chu kì (T)</h3>
                 <p class="mb-2"><strong>Định nghĩa:</strong> Thời gian để vật thực hiện được một dao động toàn phần</p>
                 <p class="mb-2"><strong>Đơn vị:</strong> giây (s)</p>
                 <div class="bg-blue-100 dark:bg-blue-800/30 p-3 rounded-lg mt-3">
@@ -187,7 +209,7 @@ export default function LessonPage() {
               </div>
 
               <div class="bg-green-50 dark:bg-green-900/20 p-5 rounded-xl border border-green-200 dark:border-green-700">
-                <h3 class="font-bold mb-3 text-green-800 dark:text-green-200 text-lg">🔄 Tần số (f)</h3>
+                <h3 class="font-bold mb-3 text-green-800 dark:text-green-200 text-lg">2. Tần số (f)</h3>
                 <p class="mb-2"><strong>Định nghĩa:</strong> Số dao động toàn phần thực hiện trong một đơn vị thời gian</p>
                 <p class="mb-2"><strong>Đơn vị:</strong> hertz (Hz)</p>
                 <div class="bg-green-100 dark:bg-green-800/30 p-3 rounded-lg mt-3">
@@ -197,7 +219,7 @@ export default function LessonPage() {
             </div>
 
             <div class="bg-purple-50 dark:bg-purple-900/20 p-5 rounded-xl border border-purple-200 dark:border-purple-700 mb-6">
-              <h3 class="font-bold mb-3 text-purple-800 dark:text-purple-200 text-lg">⚡ Tần số góc (ω)</h3>
+              <h3 class="font-bold mb-3 text-purple-800 dark:text-purple-200 text-lg">3. Tần số góc (ω)</h3>
               <p class="mb-2"><strong>Định nghĩa:</strong> Đặc trưng cho tốc độ biến thiên của pha dao động</p>
               <p class="mb-2"><strong>Đơn vị:</strong> rad/s (radian trên giây)</p>
               <div class="bg-purple-100 dark:bg-purple-800/30 p-3 rounded-lg mt-3">
@@ -206,7 +228,7 @@ export default function LessonPage() {
             </div>
 
             <div class="bg-amber-50 dark:bg-amber-900/20 p-5 rounded-xl border border-amber-200 dark:border-amber-700">
-              <h3 class="font-bold mb-4 text-amber-800 dark:text-amber-200 text-lg">🔗 Mối liên hệ giữa các đại lượng</h3>
+              <h3 class="font-bold mb-4 text-amber-800 dark:text-amber-200 text-lg">Mối liên hệ giữa các đại lượng</h3>
               <div class="grid md:grid-cols-3 gap-4 text-center">
                 <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
                   <p class="font-mono text-lg mb-2">f = 1/T</p>
@@ -224,7 +246,7 @@ export default function LessonPage() {
             </div>
 
             <div class="mt-6 bg-red-50 dark:bg-red-900/20 p-4 rounded-lg border-l-4 border-red-400">
-              <h4 class="font-semibold text-red-800 dark:text-red-200 mb-2">⚠️ Lưu ý quan trọng</h4>
+              <h4 class="font-semibold text-red-800 dark:text-red-200 mb-2">Chú ý:</h4>
               <ul class="text-sm space-y-1">
                 <li>• Chu kì T và tần số f là nghịch đảo của nhau</li>
                 <li>• Tần số góc ω luôn lớn hơn tần số f (vì 2π ≈ 6.28)</li>
@@ -248,7 +270,7 @@ export default function LessonPage() {
             
             <div class="example-box">
               <h3 class="font-semibold text-green-800 dark:text-green-200 mb-4">
-                📝 Ví dụ 1: Tính chu kì và tần số
+                Ví dụ 1: Tính chu kì và tần số
               </h3>
               
               <div class="space-y-4">
@@ -275,11 +297,11 @@ export default function LessonPage() {
           title: "Tổng kết bài học",
           type: "summary",
           content: `
-            <h2>🎯 Những điều cần nhớ</h2>
+            <h2>Tổng kết</h2>
             
             <div class="grid md:grid-cols-2 gap-6">
               <div class="space-y-4">
-                <h3 class="font-bold text-lg mb-3">✅ Khái niệm chính</h3>
+                <h3 class="font-bold text-lg mb-3">Nội dung chính</h3>
                 <ul class="space-y-2">
                   <li class="flex items-start">
                     <span class="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2"></span>
@@ -297,7 +319,7 @@ export default function LessonPage() {
               </div>
 
               <div class="space-y-4">
-                <h3 class="font-bold text-lg mb-3">🔧 Công thức quan trọng</h3>
+                <h3 class="font-bold text-lg mb-3">Công thức cần nhớ</h3>
                 <div class="formula-box text-center">
                   <p>$f = \\frac{1}{T}$</p>
                 </div>
@@ -308,7 +330,7 @@ export default function LessonPage() {
             </div>
 
             <div class="mt-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl">
-              <h3 class="font-bold mb-2">🚀 Chuẩn bị cho bài tiếp theo</h3>
+              <h3 class="font-bold mb-2">Bài tiếp theo</h3>
               <p>Bài 2 sẽ học về <strong>Phương trình dao động điều hòa</strong> - dạng dao động đặc biệt quan trọng!</p>
             </div>
           `,
@@ -319,11 +341,11 @@ export default function LessonPage() {
           title: "Các thông số dao động",
           type: "concept",
           content: `
-            <h2>📐 Thông số cơ bản của dao động</h2>
+            <h2>IV. Thông số cơ bản của dao động</h2>
             
             <div class="grid md:grid-cols-2 gap-6 mb-8">
               <div class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl border border-blue-200 dark:border-blue-700">
-                <h3 class="font-bold mb-3 text-blue-800 dark:text-blue-200 text-lg">📏 Biên độ dao động (A)</h3>
+                <h3 class="font-bold mb-3 text-blue-800 dark:text-blue-200 text-lg">1. Biên độ dao động (A)</h3>
                 <p class="mb-2"><strong>Định nghĩa:</strong> Độ lệch cực đại của vật khỏi vị trí cân bằng</p>
                 <p class="mb-2"><strong>Đơn vị:</strong> mét (m), cm, mm</p>
                 <div class="bg-blue-100 dark:bg-blue-800/30 p-3 rounded-lg mt-3">
@@ -332,7 +354,7 @@ export default function LessonPage() {
               </div>
 
               <div class="bg-green-50 dark:bg-green-900/20 p-5 rounded-xl border border-green-200 dark:border-green-700">
-                <h3 class="font-bold mb-3 text-green-800 dark:text-green-200 text-lg">📍 Li độ (x)</h3>
+                <h3 class="font-bold mb-3 text-green-800 dark:text-green-200 text-lg">2. Li độ (x)</h3>
                 <p class="mb-2"><strong>Định nghĩa:</strong> Tọa độ của vật tại thời điểm t so với vị trí cân bằng</p>
                 <p class="mb-2"><strong>Đơn vị:</strong> mét (m), cm, mm</p>
                 <div class="bg-green-100 dark:bg-green-800/30 p-3 rounded-lg mt-3">
@@ -343,7 +365,7 @@ export default function LessonPage() {
 
             <div class="grid md:grid-cols-2 gap-6 mb-6">
               <div class="bg-purple-50 dark:bg-purple-900/20 p-5 rounded-xl border border-purple-200 dark:border-purple-700">
-                <h3 class="font-bold mb-3 text-purple-800 dark:text-purple-200 text-lg">🕰️ Pha dao động (φ)</h3>
+                <h3 class="font-bold mb-3 text-purple-800 dark:text-purple-200 text-lg">3. Pha dao động (φ)</h3>
                 <p class="mb-2"><strong>Định nghĩa:</strong> Đại lượng xác định trạng thái dao động tại thời điểm t</p>
                 <p class="mb-2"><strong>Đơn vị:</strong> radian (rad) hoặc độ (°)</p>
                 <div class="bg-purple-100 dark:bg-purple-800/30 p-3 rounded-lg mt-3">
@@ -352,7 +374,7 @@ export default function LessonPage() {
               </div>
 
               <div class="bg-orange-50 dark:bg-orange-900/20 p-5 rounded-xl border border-orange-200 dark:border-orange-700">
-                <h3 class="font-bold mb-3 text-orange-800 dark:text-orange-200 text-lg">🎯 Pha ban đầu (φ₀)</h3>
+                <h3 class="font-bold mb-3 text-orange-800 dark:text-orange-200 text-lg">4. Pha ban đầu (φ₀)</h3>
                 <p class="mb-2"><strong>Định nghĩa:</strong> Pha dao động tại thời điểm t = 0</p>
                 <p class="mb-2"><strong>Đơn vị:</strong> radian (rad) hoặc độ (°)</p>
                 <div class="bg-orange-100 dark:bg-orange-800/30 p-3 rounded-lg mt-3">
@@ -362,7 +384,7 @@ export default function LessonPage() {
             </div>
 
             <div class="bg-amber-50 dark:bg-amber-900/20 p-5 rounded-xl border border-amber-200 dark:border-amber-700">
-              <h3 class="font-bold mb-4 text-amber-800 dark:text-amber-200 text-lg">📈 Mối quan hệ giữa các thông số</h3>
+              <h3 class="font-bold mb-4 text-amber-800 dark:text-amber-200 text-lg">Mối quan hệ giữa các thông số</h3>
               <div class="text-center bg-white dark:bg-gray-800 p-4 rounded-lg">
                 <p class="text-lg font-mono mb-2">-A ≤ x ≤ +A</p>
                 <p class="text-sm text-gray-600 dark:text-gray-400">Li độ luôn nằm trong khoảng từ -A đến +A</p>
@@ -376,11 +398,11 @@ export default function LessonPage() {
           title: "Ứng dụng thực tế của dao động",
           type: "example",
           content: `
-            <h2>🌍 Dao động trong cuộc sống</h2>
+            <h2>V. Ứng dụng của dao động trong thực tế</h2>
             
             <div class="grid md:grid-cols-3 gap-6 mb-8">
               <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/30 p-5 rounded-xl">
-                <h3 class="font-bold mb-3 text-blue-800 dark:text-blue-200">🎵 Âm nhạc & Âm thanh</h3>
+                <h3 class="font-bold mb-3 text-blue-800 dark:text-blue-200">1. Âm nhạc & Âm thanh</h3>
                 <ul class="space-y-2 text-sm">
                   <li>• Dây đàn guitar, piano</li>
                   <li>• Màng loa, tai nghe</li>
@@ -393,7 +415,7 @@ export default function LessonPage() {
               </div>
 
               <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/30 p-5 rounded-xl">
-                <h3 class="font-bold mb-3 text-green-800 dark:text-green-200">🏗️ Xây dựng & Kiến trúc</h3>
+                <h3 class="font-bold mb-3 text-green-800 dark:text-green-200">2. Xây dựng & Kiến trúc</h3>
                 <ul class="space-y-2 text-sm">
                   <li>• Cách ly chấn động tòa nhà</li>
                   <li>• Giảm chấn cầu treo</li>
@@ -406,7 +428,7 @@ export default function LessonPage() {
               </div>
 
               <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/30 p-5 rounded-xl">
-                <h3 class="font-bold mb-3 text-purple-800 dark:text-purple-200">🚗 Giao thông vận tải</h3>
+                <h3 class="font-bold mb-3 text-purple-800 dark:text-purple-200">3. Giao thông vận tải</h3>
                 <ul class="space-y-2 text-sm">
                   <li>• Hệ thống giảm chấn ô tô</li>
                   <li>• Cân bằng bánh xe</li>
@@ -421,7 +443,7 @@ export default function LessonPage() {
 
             <div class="grid md:grid-cols-2 gap-6 mb-6">
               <div class="bg-red-50 dark:bg-red-900/20 p-5 rounded-xl border border-red-200 dark:border-red-700">
-                <h3 class="font-bold mb-3 text-red-800 dark:text-red-200">🏥 Y tế & Sức khỏe</h3>
+                <h3 class="font-bold mb-3 text-red-800 dark:text-red-200">4. Y tế & Sức khỏe</h3>
                 <ul class="space-y-2 text-sm">
                   <li>• Máy siêu âm chẩn đoán (1-10 MHz)</li>
                   <li>• Máy rung massage trị liệu</li>
@@ -431,7 +453,7 @@ export default function LessonPage() {
               </div>
 
               <div class="bg-indigo-50 dark:bg-indigo-900/20 p-5 rounded-xl border border-indigo-200 dark:border-indigo-700">
-                <h3 class="font-bold mb-3 text-indigo-800 dark:text-indigo-200">⚡ Công nghệ điện tử</h3>
+                <h3 class="font-bold mb-3 text-indigo-800 dark:text-indigo-200">5. Công nghệ điện tử</h3>
                 <ul class="space-y-2 text-sm">
                   <li>• Thạch anh đồng hồ: 32.768 Hz</li>
                   <li>• Vi xử lý máy tính: GHz</li>
@@ -442,7 +464,7 @@ export default function LessonPage() {
             </div>
 
             <div class="bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 p-5 rounded-xl">
-              <h3 class="font-bold mb-3 text-cyan-800 dark:text-cyan-200">🔬 Ví dụ tính toán thực tế</h3>
+              <h3 class="font-bold mb-3 text-cyan-800 dark:text-cyan-200">Ví dụ tính toán thực tế</h3>
               <div class="bg-white dark:bg-gray-800 p-4 rounded-lg">
                 <p class="mb-2"><strong>Bài toán:</strong> Dây đàn guitar có tần số 440 Hz (nốt La). Tính chu kì dao động?</p>
                 <p class="mb-2"><strong>Giải:</strong> T = 1/f = 1/440 ≈ 0.0023 s = 2.3 ms</p>
